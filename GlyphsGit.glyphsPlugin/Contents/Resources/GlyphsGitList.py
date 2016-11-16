@@ -15,8 +15,7 @@ class GitList(object):
     p = Glyphs.font.filepath
     try:
       os.chdir(os.path.dirname(p))
-      if not os.path.isdir("./git"):
-        self._runGit(["init"])
+
       self._runGit(["checkout", "master"])
       process = subprocess.Popen(["git", "log", "--pretty=format:%h,%cr,%s","--abbrev-commit", os.path.basename(p)], stdout=subprocess.PIPE)
       result = process.communicate()[0]
